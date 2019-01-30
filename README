@@ -1,0 +1,19 @@
+example command to run detection:
+python tools/infer_simple.py --cfg experiments/e2e_faster_rcnn_resnet-50-FPN_pascal2007.yaml --output-dir experiments/ootd-out --image-ext jpg --wts experiments/output/train/voc_2019_train/generalized_rcnn/model_iter30999.pkl ../ootd_imgs
+
+What technology/library are you using and why are you using them?
+=========================================================================
+I fine tuned a Faster-RCNN model using the detectron library. Faster-RCNN is a state of the art algorithm for
+training a detector, and detectron provides a convenient library for training Faster-RCNN.
+
+Which kind of images is your tool good at predicting and which not?
+=========================================================================
+The model works by learning a representation of the training data, so if an example image is not in the training
+data, the detector will not work as well. Because the training data only consists of under 400 images, there
+are many cases where the detector will not perform as well. As example, some of the test images that I provided
+are lay flat images without a person in it. These images do not perform as well as images of people wearing clothes.
+
+What are the things you are do to improve the prediction results?
+=========================================================================
+The best method to improve the results is to add more training data to the dataset. Since there are only under 400
+images in the dataset, there are many poses and configurations of clothes that are not represented.
